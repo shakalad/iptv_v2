@@ -18,10 +18,15 @@ class LoginPage(BasePage):
     }
 
     def login_as_admin(self):
-        time.sleep(5)
-        self.email.set_text("shakalad92@gmail.com")
-        self.password.set_text("otxqfw2u")
-        self.submit_btn.click_button()
+        while self.driver.current_url == self.url:
+            print("fail!")
+            self.driver.refresh()
+            time.sleep(10)
+            self.email.set_text("shakalad92@gmail.com")
+            time.sleep(10)
+            self.password.set_text("otxqfw2u")
+            time.sleep(10)
+            self.submit_btn.click_button()
 
     def login_as_user(self, user):
         self.email.set_text(user.email)
