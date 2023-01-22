@@ -15,14 +15,14 @@ async def get_message(message: types.Message):
     if message.text == "/create":
         text = "Starting to create a new user"
         sent_message = await bot.send_message(chat_id=chat_id, text=text)
-        subprocess.call("bash_files/create.sh.sh", shell=True)
-        with open("temp_files/email_user.txt", "r") as file:
-            user_data = file.readline()
+        subprocess.call("bash_files/create.sh", shell=True)
+        with open("temp_files/new_user.txt", "r") as file:
+            user_data = file.readlines()
         await bot.send_message(chat_id=chat_id, text=f"{user_data[0].strip()}")
         await bot.send_message(chat_id=chat_id, text=f"{user_data[1]}")
         await bot.send_message(chat_id=chat_id, text=f"User was successfully created")
         print(sent_message.to_python())
-    elif "/recharge" in message.text:
+    elif "/recharges" in message.text:
         username = message.text.split(" ")[1]
         with open("temp_files/email_user.txt", "w") as file:
             file.write(username)

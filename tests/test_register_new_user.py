@@ -20,9 +20,14 @@ def test_full_registration_flow(browser_driver):
     with open("temp_files/new_user.txt", "w") as file:
         file.writelines([new_user.email + "\n", new_user.password])
 
+    # Login as administrator
+    login_page = LoginPage(browser_driver)
+    login_page.login_as_admin()
+
     # Transfer money to the new user
     money_transfer_page = MoneyTransferPage(browser_driver)
     money_transfer_page.transfer_money_to_the_user(new_user.email)
+    money_transfer_page.logout()
 
     # Login as new user
     login_page = LoginPage(browser_driver)
@@ -42,10 +47,6 @@ def test_full_registration_flow(browser_driver):
     playlist_link = playlist_page.get_playlist_link()
     playlist_page.logout()
     print(playlist_link)
-
-    # Login as administrator
-    login_page.login_as_admin()
-    login_page.logout()
 
     # Create new user OTT
     signup_page = OttSignUpPage(browser_driver)

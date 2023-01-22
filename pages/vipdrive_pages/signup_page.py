@@ -11,7 +11,7 @@ class SignUpPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
-        self.url = "https://vipdrive.net/auth/signup"
+        self.url = "https://vipdrive.net/welcome/signup/e804c47574f73528"
         self.open(self.url)
 
     locators = {
