@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import BasePage
 
 
@@ -19,6 +21,7 @@ class PlaylistPage(BasePage):
     def add_playlist(self, playlist_link):
         while self.driver.current_url == self.url:
             self.driver.refresh()
+            time.sleep(10)
             self.playlist_name.set_text("IPTV")
             self.playlist_link_toggle.click_button()
             self.playlist_link.set_text(playlist_link)

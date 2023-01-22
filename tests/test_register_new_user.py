@@ -59,4 +59,3 @@ def test_full_registration_flow(browser_driver):
     # Add playlist OTT
     playlist_page = OttPlayListPage(browser_driver)
     playlist_page.add_playlist(playlist_link)
-    time.sleep(30)

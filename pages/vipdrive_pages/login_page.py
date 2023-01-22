@@ -23,7 +23,6 @@ class LoginPage(BasePage):
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfw2u")
             self.submit_btn.click_button()
-            self.driver.save_screenshot("login_page.png")
 
     def login_as_user(self, user):
         self.email.set_text(user.email)
