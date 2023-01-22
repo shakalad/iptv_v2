@@ -22,7 +22,7 @@ async def get_message(message: types.Message):
         await bot.send_message(chat_id=chat_id, text=f"{user_data[1]}")
         await bot.send_message(chat_id=chat_id, text=f"User was successfully created")
         print(sent_message.to_python())
-    elif "/recharges" in message.text:
+    elif "/recharge" in message.text:
         username = message.text.split(" ")[1]
         with open("temp_files/email_user.txt", "w") as file:
             file.write(username)
