@@ -1,2 +1,2 @@
 #!/bin/bash
-pytest -s tests/test_admin_balance.py
+pytest -s tests/test_check_admin_balance.py

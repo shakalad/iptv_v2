@@ -14,5 +14,6 @@ class OverviewPage(BasePage):
     }
 
     def check_balance(self):
-        with open("../../temp_files/admin_balance.txt", "w") as file:
-            file.write(self.balance.get_text())
+        with open("temp_files/admin_balance.txt", "w") as file:
+            balance = self.balance.get_text()
+            file.write(balance)
