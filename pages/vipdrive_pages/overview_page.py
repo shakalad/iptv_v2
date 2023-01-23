@@ -10,7 +10,7 @@ class OverviewPage(BasePage):
         self.open(self.url)
 
     locators = {
-        "balance": ('CSS', "span.uk-text-lead"),
+        "balance": ('xpath', "*//span[@class='uk-text-lead']"),
     }
 
     def check_balance(self):
