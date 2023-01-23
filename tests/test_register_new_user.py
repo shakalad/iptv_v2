@@ -1,6 +1,7 @@
 import time
 
 from pages.vipdrive_pages.login_page import LoginPage
+from pages.vipdrive_pages.overview_page import OverviewPage
 from pages.vipdrive_pages.playlist_page import PlayListPage
 from pages.vipdrive_pages.signup_page import SignUpPage
 from pages.vipdrive_pages.channel_groups_page import ChannelGroupsPage
@@ -27,6 +28,10 @@ def test_full_registration_flow(browser_driver):
     # Transfer money to the new user
     money_transfer_page = MoneyTransferPage(browser_driver)
     money_transfer_page.transfer_money_to_the_user(new_user.email)
+
+    # Check balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
     money_transfer_page.logout()
 
     # Login as new user

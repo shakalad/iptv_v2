@@ -2,6 +2,7 @@ import time
 
 from pages.vipdrive_pages.login_page import LoginPage
 from pages.vipdrive_pages.money_transfer_page import MoneyTransferPage
+from pages.vipdrive_pages.overview_page import OverviewPage
 
 
 def test_recharge(browser_driver):
@@ -15,4 +16,9 @@ def test_recharge(browser_driver):
     with open("temp_files/email_user.txt", "r") as file:
         email = file.readline()
     money_transfer_page.transfer_money_to_the_user(email)
+
+    # Check admin balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
+
 
