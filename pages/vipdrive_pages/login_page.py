@@ -21,9 +21,9 @@ class LoginPage(BasePage):
 
     def login_as_admin(self):
         self.email.set_text("shakalad92@gmail.com")
-        self.password.set_text("otxqfw2u")
+        self.password.set_text("otxqfsw2u")
         self.submit_btn.click_button()
-        while self.driver.current_url == self.url:
+        if self.driver.current_url == self.url:
             print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfw2u")
