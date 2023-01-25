@@ -23,13 +23,13 @@ class LoginPage(BasePage):
         self.email.set_text("shakalad92@gmail.com")
         self.password.set_text("otxqfsw2u")
         self.submit_btn.click_button()
-        if self.driver.current_url == self.url:
-            print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-            self.email.set_text("shakalad92@gmail.com")
-            self.password.set_text("otxqfw2u")
-            self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', "
-                                       f"'block');")
-            time.sleep(1000)
+        # if self.driver.current_url == self.url:
+        #     print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        #     self.email.set_text("shakalad92@gmail.com")
+        #     self.password.set_text("otxqfw2u")
+        #     self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', "
+        #                                f"'block');")
+        #     time.sleep(1000)
         # self.driver.execute_script(f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
         #     self.submit_btn.click_button()
 
