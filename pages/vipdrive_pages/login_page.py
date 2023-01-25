@@ -23,9 +23,9 @@ class LoginPage(BasePage):
         self.email.set_text("shakalad92@gmail.com")
         self.password.set_text("otxqfsw2u")
         self.submit_btn.click_button()
-        time.sleep(20)
+        time.sleep(30)
         self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', "
-                                       f"'block');")
+                                       f"'');")
         time.sleep(20)
         # if self.driver.current_url == self.url:
         #     print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
