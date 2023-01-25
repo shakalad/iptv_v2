@@ -24,11 +24,13 @@ class LoginPage(BasePage):
         self.password.set_text("otxqfw2u")
         self.submit_btn.click_button()
         while self.driver.current_url == self.url:
+            print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfw2u")
-            self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', 'block');")
+            self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', "
+                                       f"'block');")
+            time.sleep(1000)
         # self.driver.execute_script(f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
-            time.sleep(10)
         #     self.submit_btn.click_button()
 
     def login_as_user(self, user):
