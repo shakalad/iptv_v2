@@ -20,16 +20,15 @@ class LoginPage(BasePage):
     }
 
     def login_as_admin(self):
+        self.email.set_text("shakalad92@gmail.com")
+        self.password.set_text("otxqfw2u")
+        self.submit_btn.click_button()
         if self.modal.visibility_of_element_located():
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfw2u")
             self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', 'block');")
         # self.driver.execute_script(f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
             time.sleep(10)
-            self.submit_btn.click_button()
-        else:
-            self.email.set_text("shakalad92@gmail.com")
-            self.password.set_text("otxqfw2u")
             self.submit_btn.click_button()
 
     def login_as_user(self, user):
