@@ -11,9 +11,10 @@ def solve_captcha():
     print("################ STARTED SOLVING CAPTCHA ###################")
     try:
         result = solver.recaptcha(
-            sitekey='6Lc_srkUAAAAAPSV-9P_ck-t4v_QFutp-68GssoP',
+            sitekey='6LfInyAbAAAAAF1xOpsR39DIvMT11L5Pig9aQgL_',
             url='https://vipdrive.net/auth/login')
     except Exception as e:
         print(e)
     else:
         return result['code']
+
