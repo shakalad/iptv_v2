@@ -19,14 +19,10 @@ class LoginPage(BasePage):
     }
 
     def login_as_admin(self):
-        for i in range(5):
-            self.email.set_text("shakalad92@gmail.com")
-            self.password.set_text("otxqfw2u")
-            self.submit_btn.click_button()
 
         self.email.set_text("shakalad92@gmail.com")
         self.password.set_text("otxqfw2u")
-        self.driver.execute_script(f"document.getElementById('g-recaptcha-response-100000').innerHTML='{solve_captcha()}';")
+        self.driver.execute_script(f"document.getElementsByTagName('textarea')[0].innerHTML='{solve_captcha()}';")
         self.submit_btn.click_button()
 
     def login_as_user(self, user):
