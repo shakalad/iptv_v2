@@ -23,6 +23,7 @@ class LoginPage(BasePage):
         self.email.set_text("shakalad92@gmail.com")
         self.password.set_text("otxqfsw2u")
         self.submit_btn.click_button()
+        time.sleep(5)
         while self.driver.current_url == self.url:
             self.driver.refresh()
             time.sleep(5)
