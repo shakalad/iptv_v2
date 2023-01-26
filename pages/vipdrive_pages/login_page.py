@@ -18,7 +18,8 @@ class LoginPage(BasePage):
         'email': ('CSS', "input[name='email']"),
         'password': ('CSS', "input[name='password']"),
         'submit_btn': ('CSS', "button[type='submit']"),
-        'modal': ('XPATH', "*//div[@class='uk-notification uk-notification-top-right']")
+        'modal': ('XPATH', "*//div[@class='uk-notification uk-notification-top-right']"),
+        'captcha_textarea': ('XPATH', "*//textarea[@id='g-recaptcha-response']")
     }
 
     def login_as_admin(self):
@@ -26,7 +27,8 @@ class LoginPage(BasePage):
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
-            if self.is_not_element_present(By.XPATH, "*//div[@class='uk-notification uk-notification-top-right']"):
+            time.sleep(5)
+            if self.is_not_element_present(By.XPATH, "*//textarea[@id='g-recaptcha-response']"):
                 break
             else:
                 self.email.set_text("shakalad92@gmail.com")
