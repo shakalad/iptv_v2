@@ -28,11 +28,12 @@ class LoginPage(BasePage):
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
-            time.sleep(60)
+            time.sleep(5)
             if self.iframe.element_to_be_clickable():
                 self.driver.switch_to.frame(self.iframe.element_to_be_clickable())
-                self.driver.execute_script(
-                    f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
+                self.captcha_textarea.setAttribute("display", "initial")
+                # self.driver.execute_script(
+                #     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
                 time.sleep(40)
