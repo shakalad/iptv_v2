@@ -28,9 +28,7 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(5)
-            if self.element_is_present(By.XPATH, "*//textarea[@id='g-recaptcha-response']"):
-                break
-            else:
+            if self.captcha_textarea.invisibility_of_element_located():
                 self.email.set_text("shakalad92@gmail.com")
                 self.password.set_text("otxqfsw2u")
                 self.driver.execute_script(
@@ -38,7 +36,9 @@ class LoginPage(BasePage):
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
                 time.sleep(40)
-                self.submit_btn.click_button()
+            else:
+                break
+                # self.submit_btn.click_button()
 
         # if self.driver.current_url == self.url:
         #     print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
