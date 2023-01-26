@@ -29,15 +29,16 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(5)
-            iframe = self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']"))
-            self.driver.switch_to.frame(iframe)
-            print("###############^^^^^^^%%%%%%%%%%%%%%%%%%")
-            self.captcha_textarea.setAttribute("display", "initial")
-            # self.driver.execute_script(
-            #     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
-            self.driver.execute_script(
-                f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
-            time.sleep(40)
+            if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
+                print("###############^^^^^^^%%%%%%%%%%%%%%%%%%")
+                iframe = self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']"))
+                self.driver.switch_to.frame(iframe)
+                # self.captcha_textarea.setAttribute("display", "initial")
+                # self.driver.execute_script(
+                #     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
+                self.driver.execute_script(
+                    f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
+                time.sleep(40)
 
         # if self.driver.current_url == self.url:
         #     print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")

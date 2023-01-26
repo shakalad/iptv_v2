@@ -17,4 +17,7 @@ class BasePage(PageFactory):
         self.driver.get("https://vipdrive.net/auth/signout")
 
     def element_is_present(self, locator, timeout=10):
-        return wait(self.driver, timeout).until(ec.presence_of_element_located(locator))
+        try:
+            return wait(self.driver, timeout).until(ec.presence_of_element_located(locator))
+        except TimeoutException:
+            return False
