@@ -29,7 +29,7 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(5)
-            self.driver.switch_to.frame(self.iframe.get_web_element())
+            self.driver.switch_to.frame(self.get_web_element(('XPATH', "*//iframe[@title='reCAPTCHA']")))
             print("###############^^^^^^^%%%%%%%%%%%%%%%%%%")
             self.captcha_textarea.setAttribute("display", "initial")
             # self.driver.execute_script(
