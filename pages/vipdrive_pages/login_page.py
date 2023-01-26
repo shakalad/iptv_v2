@@ -31,7 +31,7 @@ class LoginPage(BasePage):
             time.sleep(5)
             if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
                 print("###############^^^^^^^%%%%%%%%%%%%%%%%%%")
-                self.driver.execute_script(f"document.getElementById('g-recaptcha-response').setAttribute('display', 'block');")
+                self.driver.execute_script(f"document.getElementById('g-recaptcha-response').style.display='initial';")
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
                 time.sleep(40)
