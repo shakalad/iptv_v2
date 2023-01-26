@@ -29,17 +29,14 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(5)
-            if self.iframe.element_to_be_clickable():
-                self.driver.switch_to.frame(self.iframe.element_to_be_clickable())
-                self.captcha_textarea.setAttribute("display", "initial")
-                # self.driver.execute_script(
-                #     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
-                self.driver.execute_script(
-                    f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
-                time.sleep(40)
-            else:
-                break
-                # self.submit_btn.click_button()
+            self.driver.switch_to.frame(self.iframe.get_web_element())
+            print("###############^^^^^^^%%%%%%%%%%%%%%%%%%")
+            self.captcha_textarea.setAttribute("display", "initial")
+            # self.driver.execute_script(
+            #     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
+            self.driver.execute_script(
+                f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
+            time.sleep(40)
 
         # if self.driver.current_url == self.url:
         #     print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
