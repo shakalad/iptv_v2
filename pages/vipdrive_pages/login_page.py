@@ -37,6 +37,7 @@ class LoginPage(BasePage):
                     f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
                 self.submit_btn.click_button()
                 break
+            break
 
     def login_as_user(self, user):
         while True:
@@ -52,3 +53,4 @@ class LoginPage(BasePage):
                     f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
                 self.submit_btn.click_button()
                 break
+            break
