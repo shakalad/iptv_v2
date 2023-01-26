@@ -35,6 +35,7 @@ class LoginPage(BasePage):
                     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{'sexyyyyyyyyyyyyyy'}';")
+                time.sleep(40)
                 self.submit_btn.click_button()
 
         # if self.driver.current_url == self.url:
