@@ -30,6 +30,8 @@ class LoginPage(BasePage):
             self.submit_btn.click_button()
             time.sleep(5)
             if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
+                self.email.set_text("shakalad92@gmail.com")
+                self.password.set_text("otxqfsw2u")
                 self.driver.execute_script(f"document.getElementById('g-recaptcha-response').style.display='initial';")
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
