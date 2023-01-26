@@ -28,7 +28,7 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(5)
-            if self.is_not_element_present(By.XPATH, "*//textarea[@id='g-recaptcha-response']"):
+            if self.element_is_present(By.XPATH, "*//textarea[@id='g-recaptcha-response']"):
                 break
             else:
                 self.email.set_text("shakalad92@gmail.com")
