@@ -39,7 +39,16 @@ class LoginPage(BasePage):
                 break
 
     def login_as_user(self, user):
-        time.sleep(5)
-        self.email.set_text(user.email)
-        self.password.set_text(user.password)
-        self.submit_btn.click_button()
+        while True:
+            self.email.set_text(user.email)
+            self.password.set_text(user.password)
+            self.submit_btn.click_button()
+            time.sleep(5)
+            if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
+                self.email.set_text(user.email)
+                self.password.set_text(user.password)
+                self.driver.execute_script(f"document.getElementById('g-recaptcha-response').style.display='initial';")
+                self.driver.execute_script(
+                    f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
+                self.submit_btn.click_button()
+                break
