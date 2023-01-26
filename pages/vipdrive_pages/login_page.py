@@ -27,7 +27,7 @@ class LoginPage(BasePage):
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
-            time.sleep(5)
+            time.sleep(60)
             if self.captcha_textarea.invisibility_of_element_located():
                 self.email.set_text("shakalad92@gmail.com")
                 self.password.set_text("otxqfsw2u")
