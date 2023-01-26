@@ -18,11 +18,3 @@ class BasePage(PageFactory):
 
     def element_is_present(self, locator, timeout=10):
         return wait(self.driver, timeout).until(ec.presence_of_element_located(locator))
-
-    def is_not_element_present(self, locator, timeout=4):
-        try:
-            wait(self.browser, timeout).until(ec.presence_of_element_located(locator))
-        except TimeoutException:
-            return True
-
-        return False
