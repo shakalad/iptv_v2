@@ -18,6 +18,7 @@ class LoginPage(BasePage):
         'email': ('CSS', "input[name='email']"),
         'password': ('CSS', "input[name='password']"),
         'submit_btn': ('CSS', "button[type='submit']"),
+        'iframe': ('XPATH', "*//iframe[@title='reCAPTCHA']"),
         'modal': ('XPATH', "*//div[@class='uk-notification uk-notification-top-right']"),
         'captcha_textarea': ('XPATH', "*//textarea[@id='g-recaptcha-response']")
     }
@@ -28,9 +29,8 @@ class LoginPage(BasePage):
             self.password.set_text("otxqfsw2u")
             self.submit_btn.click_button()
             time.sleep(60)
-            if self.captcha_textarea.invisibility_of_element_located():
-                self.email.set_text("shakalad92@gmail.com")
-                self.password.set_text("otxqfsw2u")
+            if self.iframe.element_to_be_clickable():
+                self.driver.switch_to.frame(self.iframe.element_to_be_clickable())
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').style.display = 'initial';")
                 self.driver.execute_script(
