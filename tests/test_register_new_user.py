@@ -19,21 +19,21 @@ def test_full_registration_flow(browser_driver):
     # Create new user
     signup_page = SignUpPage(browser_driver)
     new_user = signup_page.register_new_user()
-    # with open("temp_files/new_user.txt", "w") as file:
-    #     file.writelines([new_user.email + "\n", new_user.password])
+    with open("temp_files/new_user.txt", "w") as file:
+        file.writelines([new_user.email + "\n", new_user.password])
 
-    # # Login as administrator
-    # login_page = LoginPage(browser_driver)
-    # login_page.login_as_admin()
-    #
-    # # Transfer money to the new user
-    # money_transfer_page = MoneyTransferPage(browser_driver)
-    # money_transfer_page.transfer_money_to_the_user(new_user.email)
-    #
-    # # Check balance
-    # overview_page = OverviewPage(browser_driver)
-    # overview_page.check_balance()
-    # money_transfer_page.logout()
+    # Login as administrator
+    login_page = LoginPage(browser_driver)
+    login_page.login_as_admin()
+
+    # Transfer money to the new user
+    money_transfer_page = MoneyTransferPage(browser_driver)
+    money_transfer_page.transfer_money_to_the_user(new_user.email)
+
+    # Check balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
+    money_transfer_page.logout()
 
     # Login as new user
     login_page = LoginPage(browser_driver)
