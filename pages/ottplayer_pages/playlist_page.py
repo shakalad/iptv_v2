@@ -16,6 +16,7 @@ class PlaylistPage(BasePage):
         'playlist_link_toggle': ('CSS', "div#sources_toggle:nth-child(2)"),
         'playlist_link': ('CSS', "input[name='source']"),
         'submit_btn': ('CSS', "button[type='submit']"),
+        'settings_btn': ('XPATH', "*//a[@uk-icon='settings']")
     }
 
     def add_playlist(self, playlist_link):
@@ -26,3 +27,6 @@ class PlaylistPage(BasePage):
             self.playlist_link_toggle.click_button()
             self.playlist_link.set_text(playlist_link)
             self.submit_btn.click_button()
+
+    def go_to_settings_page(self):
+        self.settings_btn.click()
