@@ -4,7 +4,7 @@ import os
 
 class JsonHandler:
     def __init__(self):
-        self.__file_path = os.path.abspath("user_data.json")
+        self.__file_path = os.path.join(os.getcwd(), 'json_files/user_data.json')
 
     def read_file(self):
         with open(self.__file_path, "r") as json_file:
@@ -16,7 +16,7 @@ class JsonHandler:
 
     def write_file(self, data):
         with open(self.__file_path, "w") as file:
-            json.dump(data, file, ident=4)
+            json.dump(data, file)
 
     def update_data(self, key, value):
         data = self.read_file()
