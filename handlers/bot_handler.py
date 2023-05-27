@@ -21,16 +21,19 @@ class BotHandler:
 
     async def create_command(self, chat_id, email):
         await self.send_message(chat_id, "Starting new user registration")
-        self.__json_handler.update_data('email', email)
+        self.__json_handler.update_data('email', "ipservice2023+" + email + "@gmail.com")
         self.__pytest_handler.create_user()
+        new_email = self.__json_handler.read_file()['email']
+        await self.send_message(chat_id=chat_id, text=f'{new_email} was successfully created')
 
     async def recharge_command(self, chat_id, email, amount="1"):
-        await self.send_message(chat_id, f"I transfer money to the {email} in the amount of {amount}$")
+        await self.send_message(chat_id, f"I start recharging the {email} in the amount of {amount}$")
         self.__json_handler.update_data('email', email)
+        self.__json_handler.update_data('amount', amount)
         self.__pytest_handler.recharge_user()
 
     async def balance_command(self, chat_id):
-        await self.send_message(chat_id, "Want to know how much money is left in your account? Let me help you")
+        await self.send_message(chat_id, "Starting to check admin balance")
         self.__pytest_handler.check_balance()
 
     async def get_message(self, message: types.Message):
@@ -49,8 +52,11 @@ class BotHandler:
         elif "/balance" in message.text:
             await self.balance_command(chat_id)
 
+        admin_balance = self.__json_handler.read_file()['admin_balance']
+        await self.send_message(chat_id=chat_id, text=f'Admin Balance: {admin_balance}')
+
     def register_handlers(self):
-        self.__dispatcher.register_message_handler(self.start, commands=['/start'])
+        self.__dispatcher.register_message_handler(self.start, commands=['start'])
         self.__dispatcher.register_message_handler(self.get_message)
 
     def start_polling(self):

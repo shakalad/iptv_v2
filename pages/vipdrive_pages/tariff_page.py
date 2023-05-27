@@ -21,5 +21,5 @@ class TariffPage(BasePage):
                 if auto_renewal:
                     self.auto_renewal_btn.click_button()
                     break
-            except Exception:
-                pass
+            except Exception as cant_activate:
+                print(cant_activate)

@@ -1,6 +1,8 @@
+import os
 import time
 
 from pages.base_page import BasePage
+from selenium.webdriver.common.by import By
 
 
 class PlaylistPage(BasePage):
@@ -20,20 +22,12 @@ class PlaylistPage(BasePage):
         'settings_btn': ('XPATH', "*//a[@uk-icon='settings']")
     }
 
-
-def add_playlist(self, playlist_link):
-    # TODO: update a method to upload playlist file
-    while self.driver.current_url == self.url:
-        self.driver.refresh()
-        time.sleep(10)
+    def upload_playlist(self):
         self.playlist_name.set_text("IPTV")
-        self.playlist_link_toggle.click_button()
-        self.playlist_link.set_text(playlist_link)
+        upload_input = self.element_is_present((By.XPATH, "*//input[@id='inplaylist']"))
+        upload_input.send_keys(os.path.join(os.getcwd(), 'temp_files/playlist.m3u8'))
+        # self.playlist_link.playlist_upload_input.send_text()
         self.submit_btn.click_button()
 
-
-def upload_playlist(self):
-    self.playlist_name.set_text("IPTV")
-    self.playlist_link_toggle.click_button()
-    self.playlist_link.playlist_upload_input.send_keys('playlist.m3u8')
-    self.submit_btn.click_button()
+    def delete_playlist_file(self):
+        os.remove(os.path.join(os.getcwd(), 'temp_files/playlist.m3u8'))

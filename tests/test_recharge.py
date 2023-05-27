@@ -4,8 +4,12 @@ from pages.vipdrive_pages.login_page import LoginPage
 from pages.vipdrive_pages.money_transfer_page import MoneyTransferPage
 from pages.vipdrive_pages.overview_page import OverviewPage
 
+from handlers.json_handler import JsonHandler
+
 
 def test_recharge(browser_driver):
+    json_handler = JsonHandler()
+
     # Login as administrator
     login_page = LoginPage(browser_driver)
     time.sleep(5)
@@ -13,9 +17,9 @@ def test_recharge(browser_driver):
 
     # Transfer money to the user
     money_transfer_page = MoneyTransferPage(browser_driver)
-    with open("temp_files/email_user.txt", "r") as file:
-        email = file.readline()
-    money_transfer_page.transfer_money_to_the_user(email)
+    email = json_handler.read_file()['email']
+    amount = json_handler.read_file()['amount']
+    money_transfer_page.transfer_money_to_the_user(email, amount)
 
     # Check admin balance
     overview_page = OverviewPage(browser_driver)
