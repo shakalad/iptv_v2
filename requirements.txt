@@ -1,0 +1,8 @@
+selenium
+selenium-page-factory
+pytest
+faker
+webdriver-manager
+aiogram
+2captcha-python
+pytest-html

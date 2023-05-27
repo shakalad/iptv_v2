@@ -21,3 +21,5 @@ class BasePage(PageFactory):
             return wait(self.driver, timeout).until(ec.presence_of_element_located(locator))
         except TimeoutException:
             return False
+
+

@@ -1,20 +1,16 @@
 from data.data import User
 from faker import Faker
 
-import random
-import string
 
-
-def get_random_string(length):
-    # choose from all lowercase letter
-    letters = string.ascii_lowercase
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
+def get_random_username(words=2):
+    random_word = []
+    for i in range(0, words):
+        random_word.append(faker.word())
+    return "".join(random_word)
 
 
 faker = Faker()
 Faker.seed()
-random_username = get_random_string(16)
 password = faker.password(special_chars=False).lower()
 
 
@@ -36,7 +32,7 @@ def get_last_email():
 
 def generated_user():
     yield User(
-        username="".join(random_username.split()).lower(),
+        username=get_random_username(),
         email=get_last_email(),
         password=password,
         repassword=password,
