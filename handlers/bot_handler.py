@@ -1,9 +1,12 @@
+import sys
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
 from configs.bot_configs import token
 from handlers.json_handler import JsonHandler
 from handlers.pytest_handler import PytestHandler
+from handlers.exception_handler import NotEnoughMoneyException
 
 
 class BotHandler:
@@ -22,7 +25,11 @@ class BotHandler:
     async def create_command(self, chat_id, email):
         await self.send_message(chat_id, "Starting new user registration")
         self.__json_handler.update_data('email', "ipservice2023+" + email + "@gmail.com")
-        self.__pytest_handler.create_user()
+        try:
+            self.__pytest_handler.create_user()
+        except NotEnoughMoneyException:
+            await self.send_message(chat_id=chat_id, text=f'{str(NotEnoughMoneyException)}')
+            return
         new_email = self.__json_handler.read_file()['email']
         await self.send_message(chat_id=chat_id, text=f'{new_email} was successfully created')
 
@@ -30,7 +37,11 @@ class BotHandler:
         await self.send_message(chat_id, f"I start recharging the {email} in the amount of {amount}$")
         self.__json_handler.update_data('email', email)
         self.__json_handler.update_data('amount', amount)
-        self.__pytest_handler.recharge_user()
+        try:
+            self.__pytest_handler.recharge_user()
+        except NotEnoughMoneyException as e:
+            await self.send_message(chat_id=chat_id, text=f'{str(e)}')
+            return
 
     async def balance_command(self, chat_id):
         await self.send_message(chat_id, "Starting to check admin balance")
@@ -40,7 +51,10 @@ class BotHandler:
         chat_id = message.chat.id
         if "/create" in message.text:
             new_user_email = message.text.split(" ")[1]
-            await self.create_command(chat_id=chat_id, email=new_user_email)
+            try:
+                await self.create_command(chat_id=chat_id, email=new_user_email)
+            except NotEnoughMoneyException as e:
+                await self.send_message(chat_id=chat_id, text=f'{e}')
         elif "/recharge" in message.text:
             l_str = message.text.split(" ")
             user_email = l_str[1]
