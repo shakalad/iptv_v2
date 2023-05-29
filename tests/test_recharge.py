@@ -15,15 +15,15 @@ def test_recharge(browser_driver):
     time.sleep(5)
     login_page.login_as_admin()
 
-    # Check admin balance
-    overview_page = OverviewPage(browser_driver)
-    overview_page.check_balance()
-
     # Transfer money to the user
     money_transfer_page = MoneyTransferPage(browser_driver)
     email = json_handler.read_file()['email']
     amount = json_handler.read_file()['amount']
     money_transfer_page.transfer_money_to_the_user(email, amount)
+
+    # Check admin balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
 
 
 

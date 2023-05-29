@@ -23,13 +23,13 @@ def test_full_registration_flow(browser_driver):
     login_page = LoginPage(browser_driver)
     login_page.login_as_admin()
 
-    # Check balance
-    overview_page = OverviewPage(browser_driver)
-    overview_page.check_balance()
-
     # Transfer money to the new user
     money_transfer_page = MoneyTransferPage(browser_driver)
     money_transfer_page.transfer_money_to_the_user(new_user.email)
+
+    # Check balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
 
     money_transfer_page.logout()
 
@@ -42,9 +42,9 @@ def test_full_registration_flow(browser_driver):
     channel_group_page.config_playlist()
 
     # Activate tariff
-    # tariff_page = TariffPage(browser_driver)
-    # tariff_page.activate_tariff(auto_renewal=True)
-    time.sleep(5)
+    tariff_page = TariffPage(browser_driver)
+    tariff_page.activate_tariff(auto_renewal=True)
+    # time.sleep(5)
 
     # Get playlist link and logout
     playlist_page = PlayListPage(browser_driver)

@@ -12,7 +12,7 @@ def get_random_username(words=2):
 
 faker = Faker()
 Faker.seed()
-password = faker.password(special_chars=False).lower()
+password = "904070"
 
 
 def generated_user():
