@@ -14,7 +14,7 @@ class TariffPage(BasePage):
         'auto_renewal_btn': ('CSS', "button[id='actAutoBtn']"),
     }
 
-    def activate_tariff(self, auto_renewal):
+    def activate_tariff(self, auto_renewal=True):
         while True:
             try:
                 self.activation_btn.click_button()

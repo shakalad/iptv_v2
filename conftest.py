@@ -1,11 +1,11 @@
-import base64
-
 import pytest
 import os
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+
+from handlers.data_handler import DataHandler
 
 
 @pytest.fixture()
@@ -24,3 +24,9 @@ def browser_driver():
     # driver.maximize_window()
     yield driver
     driver.quit()
+
+
+@pytest.fixture
+def data():
+    data = DataHandler()
+    yield data

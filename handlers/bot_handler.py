@@ -57,7 +57,13 @@ class BotHandler:
                 await self.send_message(chat_id=chat_id, text=f'{e}')
         elif "/recharge" in message.text:
             l_str = message.text.split(" ")
-            user_email = l_str[1]
+            for el in l_str:
+                if "@" in el:
+                    user_email = el
+                elif el:
+                    # TODO continue
+                    pass
+                
             if len(l_str) > 2:
                 amount = l_str[2]
                 await self.recharge_command(chat_id=chat_id, email=user_email, amount=amount)

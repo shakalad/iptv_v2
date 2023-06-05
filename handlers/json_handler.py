@@ -14,6 +14,10 @@ class JsonHandler:
             except json.JSONDecodeError:
                 return {}
 
+    def get(self, key):
+        data = self.read_file()
+        return data[key]
+
     def write_file(self, data):
         with open(self.__file_path, "w") as file:
             json.dump(data, file)
