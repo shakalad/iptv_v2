@@ -16,6 +16,5 @@ def solve_captcha():
     except Exception as e:
         print(e)
     else:
-        print(f"{result['code']}")
         return result['code']
 

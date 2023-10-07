@@ -17,7 +17,13 @@ class LoginPage(BasePage):
         'submit_btn': ('CSS', "button[type='submit']"),
     }
 
-    def login(self, email, password):
+    def login_as_user(self, user):
+        time.sleep(5)
+        self.email.set_text(user.email)
+        self.password.set_text(user.password)
+        self.submit_btn.click_button()
+
+    def login_as_old_user(self, email, password):
         time.sleep(5)
         self.email.set_text(email)
         self.password.set_text(password)
