@@ -27,20 +27,20 @@ class SignUpPage(BasePage):
         # registration
         user = next(generated_user())
         self.username.set_text(user.username)
-        self.email.set_text(user.user_email)
-        self.password.set_text(user.user_password)
+        self.email.set_text(user.email)
+        self.password.set_text(user.password)
         self.re_password.set_text(user.repassword)
         self.submit_btn.click()
 
         # verification
-        self.email.set_text(user.user_email)
+        self.email.set_text(user.email)
         time.sleep(10)
         verification_code = get_vipdrive_registration_verification_code()
         self.verification_code.set_text(verification_code)
         self.submit_btn.click()
 
-        print(f"Email: {user.user_email}\n"
-              f"Password: {user.user_password}\n"
+        print(f"Email: {user.email}\n"
+              f"Password: {user.password}\n"
               f"Username: {user.username}\n"
               f"Verification Code: {verification_code}")
 

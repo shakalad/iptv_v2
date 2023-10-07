@@ -25,8 +25,8 @@ class SignUpPage(BasePage):
     def register_new_user(self, user):
         # registration
         self.username.set_text(user.username)
-        self.email.set_text(user.user_email)
-        self.password.set_text(user.user_password)
+        self.email.set_text(user.email)
+        self.password.set_text(user.password)
         self.re_password.set_text(user.repassword)
         self.submit_btn.click()
 

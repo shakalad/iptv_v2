@@ -1,4 +1,3 @@
-from handlers.json_handler import JsonHandler
 from pages.base_page import BasePage
 
 
@@ -15,5 +14,6 @@ class OverviewPage(BasePage):
     }
 
     def check_balance(self):
-        json_handler = JsonHandler()
-        json_handler.update_data('admin_balance', self.balance.get_text())
+        with open("temp_files/admin_balance.txt", "w") as file:
+            balance = self.balance.get_text()
+            file.write(balance)

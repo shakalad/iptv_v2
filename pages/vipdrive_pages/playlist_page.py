@@ -10,9 +10,8 @@ class PlayListPage(BasePage):
         self.open(self.url)
 
     locators = {
-        'playlist_link': ('CSS', "div[id='pllink2']"),
-        'playlist_download': ('XPATH', "*//button[@id='setFileType']")
+        'playlist_link': ('CSS', "div[id='pllink']"),
     }
 
-    def download_playlist(self):
-        self.playlist_download.click()
+    def get_playlist_link(self):
+        return self.playlist_link.get_text()

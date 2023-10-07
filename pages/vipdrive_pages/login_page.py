@@ -28,6 +28,7 @@ class LoginPage(BasePage):
             self.email.set_text("shakalad92@gmail.com")
             self.password.set_text("otxqfw2u")
             self.submit_btn.click_button()
+            time.sleep(5)
             if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
                 self.email.set_text("shakalad92@gmail.com")
                 self.password.set_text("otxqfw2u")
@@ -35,34 +36,18 @@ class LoginPage(BasePage):
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
                 self.submit_btn.click_button()
-                print("### SUCCESS YOU ARE LOGED IN AS ADMIN")
                 break
             break
 
     def login_as_user(self, user):
         while True:
-            self.email.set_text(user.user_email)
-            self.password.set_text(user.user_password)
+            self.email.set_text(user.email)
+            self.password.set_text(user.password)
             self.submit_btn.click_button()
+            time.sleep(5)
             if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
-                self.email.set_text(user.user_email)
-                self.password.set_text(user.user_password)
-                self.driver.execute_script(f"document.getElementById('g-recaptcha-response').style.display='initial';")
-                self.driver.execute_script(
-                    f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
-                self.submit_btn.click_button()
-                print(f"### SUCCESS YOU ARE LOGED IN AS {user.user_email}")
-                break
-            break
-
-    def login(self, email, password):
-        while True:
-            self.email.set_text(email)
-            self.password.set_text(password)
-            self.submit_btn.click_button()
-            if self.element_is_present((By.XPATH, "*//iframe[@title='reCAPTCHA']")):
-                self.email.set_text(email)
-                self.password.set_text(password)
+                self.email.set_text(user.email)
+                self.password.set_text(user.password)
                 self.driver.execute_script(f"document.getElementById('g-recaptcha-response').style.display='initial';")
                 self.driver.execute_script(
                     f"document.getElementById('g-recaptcha-response').innerHTML='{solve_captcha()}';")
