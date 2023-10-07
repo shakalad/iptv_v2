@@ -3,6 +3,7 @@ import time
 from pages.vipdrive_pages.login_page import LoginPage
 from pages.vipdrive_pages.money_transfer_page import MoneyTransferPage
 from pages.vipdrive_pages.overview_page import OverviewPage
+from pages.vipdrive_pages.tariff_page import TariffPage
 
 from handlers.json_handler import JsonHandler
 
@@ -20,6 +21,10 @@ def test_recharge(browser_driver):
     email = json_handler.read_file()['email']
     amount = json_handler.read_file()['amount']
     money_transfer_page.transfer_money_to_the_user(email, amount)
+
+    # Activate tariff
+    tariff_page = TariffPage(browser_driver)
+    tariff_page.activate_tariff()
 
     # Check admin balance
     overview_page = OverviewPage(browser_driver)
