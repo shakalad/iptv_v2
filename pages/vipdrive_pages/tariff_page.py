@@ -1,5 +1,7 @@
 from pages.base_page import BasePage
 
+from selenium.common.exceptions import TimeoutException
+
 
 class TariffPage(BasePage):
 
@@ -14,12 +16,13 @@ class TariffPage(BasePage):
         'auto_renewal_btn': ('CSS', "button[id='actAutoBtn']"),
     }
 
-    def activate_tariff(self, auto_renewal):
+    def activate_tariff(self):
         while True:
             try:
                 self.activation_btn.click_button()
-                if auto_renewal:
-                    self.auto_renewal_btn.click_button()
-                    break
-            except Exception as cant_activate:
+                break
+            except TimeoutException as cant_activate:
                 print(cant_activate)
+                break
+            except Exception as e:
+                print(f"Unexpected error: {e}")
