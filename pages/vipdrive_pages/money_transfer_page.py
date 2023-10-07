@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 
 from email_module.transaction_verification_module import get_transaction_verification_code
 from pages.base_page import BasePage
+from handlers.exception_handler import NotEnoughMoneyException
 
 
 class MoneyTransferPage(BasePage):
@@ -20,7 +21,7 @@ class MoneyTransferPage(BasePage):
         "confirmation_method": ('CSS', "select[name='code_transport']"),
         "trans_submit_btn": ('CSS', "button[id='mTransBtn']"),
         "verification_code": ('CSS', "input[name='code']"),
-        "submit_btn": ('CSS', "button[type='submit']")
+        "submit_btn": ('CSS', "button[type='submit']"),
     }
 
     def transfer_money_to_the_user(self, email, amount="1"):
@@ -29,7 +30,11 @@ class MoneyTransferPage(BasePage):
         self.trans_amount.set_text(amount)
         self.confirmation_method.select_element_by_value("email")
         self.element_is_present((By.CSS_SELECTOR, "button[id='mTransBtn']")).submit()
-        time.sleep(10)
+
+        # Check for enough money
+        if self.element_is_present((By.XPATH, "*//div[@class='uk-notification-message uk-notification-message-warning']")):
+            raise NotEnoughMoneyException
+
         self.verification_code.set_text(get_transaction_verification_code())
         self.submit_btn.click_button()
         time.sleep(5)
