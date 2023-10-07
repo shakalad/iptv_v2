@@ -12,7 +12,7 @@ dp = Dispatcher(bot)
 @dp.message_handler()
 async def get_message(message: types.Message):
     chat_id = message.chat.id
-    if message.text == "/create":
+    if "/create" in message.text:
         await bot.send_message(chat_id=chat_id, text="Starting to create a new user")
         subprocess.call("bash_files/create.sh", shell=True)
         with open("temp_files/new_user.txt", "r") as file:

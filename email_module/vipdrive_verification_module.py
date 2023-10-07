@@ -8,7 +8,7 @@ def get_vipdrive_registration_verification_code():
     SMTP_PORT = 993
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER, SMTP_PORT)
-    mail.login("shvilcenkokn@gmail.com", "tfcrutfucvgorkcg")
+    mail.login("ipservice2023@gmail.com", "duswmhrthxszwhcl")
     mail.select('inbox')
     _, msgnums = mail.search(None, '(FROM "support@vipdrive.net")')
     verification_code = []
