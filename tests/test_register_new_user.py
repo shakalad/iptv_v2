@@ -43,7 +43,7 @@ def test_full_registration_flow(browser_driver):
 
     # Activate tariff
     tariff_page = TariffPage(browser_driver)
-    tariff_page.activate_tariff(auto_renewal=True)
+    tariff_page.activate_tariff()
     # time.sleep(5)
 
     # Get playlist link and logout
