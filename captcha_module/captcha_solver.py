@@ -10,7 +10,7 @@ solver = TwoCaptcha(api_key)
 def solve_captcha():
     print("################ STARTED SOLVING CAPTCHA ###################")
     try:
-        result = solver.recaptcha(
+        result: TwoCaptcha = solver.recaptcha(
             sitekey='6LfInyAbAAAAAF1xOpsR39DIvMT11L5Pig9aQgL_',
             url='https://vipdrive.net/auth/login')
     except Exception as e:
@@ -18,4 +18,3 @@ def solve_captcha():
     else:
         print(f"{result['code']}")
         return result['code']
-

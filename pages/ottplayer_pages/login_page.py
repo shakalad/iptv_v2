@@ -9,7 +9,7 @@ class LoginPage(BasePage):
         super().__init__(driver)
         self.driver = driver
         self.url = "https://ottplayer.tv/account/login"
-        self.open(self.url)
+        self.bypass_cloud_flare(url=self.url)
 
     locators = {
         'email': ('CSS', "input[name='email']"),
