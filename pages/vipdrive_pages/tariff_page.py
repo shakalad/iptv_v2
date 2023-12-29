@@ -17,12 +17,9 @@ class TariffPage(BasePage):
     }
 
     def activate_tariff(self):
-        while True:
-            try:
-                self.activation_btn.click_button()
-                break
-            except TimeoutException as cant_activate:
-                print(cant_activate)
-                break
-            except Exception as e:
-                print(f"Unexpected error: {e}")
+        try:
+            self.activation_btn.click_button()
+        except TimeoutException as cant_activate:
+            print(cant_activate)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
