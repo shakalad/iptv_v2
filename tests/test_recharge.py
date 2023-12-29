@@ -22,13 +22,20 @@ def test_recharge(browser_driver):
     amount = json_handler.read_file()['amount']
     money_transfer_page.transfer_money_to_the_user(email, amount)
 
+    # Check admin balance
+    overview_page = OverviewPage(browser_driver)
+    overview_page.check_balance()
+
+    # Logout from admin
+    login_page.logout()
+
+    # Login as user
+    login_page.login_as_user(email)
+
     # Activate tariff
     tariff_page = TariffPage(browser_driver)
     tariff_page.activate_tariff()
 
-    # Check admin balance
-    overview_page = OverviewPage(browser_driver)
-    overview_page.check_balance()
 
 
 
