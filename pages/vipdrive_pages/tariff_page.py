@@ -17,7 +17,7 @@ class TariffPage(BasePage):
     }
 
     def activate_tariff(self):
-        while True:
+        for i in range(3):
             try:
                 self.activation_btn.click_button()
                 break

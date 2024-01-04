@@ -24,7 +24,7 @@ class BotHandler:
 
     async def create_command(self, chat_id, email):
         await self.send_message(chat_id, "Starting new user registration")
-        self.__json_handler.update_data('email', "ipservice2023+" + email + "@gmail.com")
+        self.__json_handler.update_data('email', "ipservice2024+" + email + "@gmail.com")
         try:
             self.__pytest_handler.create_user()
         except NotEnoughMoneyException:
