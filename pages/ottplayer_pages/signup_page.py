@@ -11,7 +11,7 @@ class SignUpPage(BasePage):
         super().__init__(driver)
         self.driver = driver
         self.url = "https://ottplayer.tv/account/registration"
-        self.open(self.url)
+        self.pass_cloud_flare(self.url)
 
     locators = {
         'username': ('CSS', "input[name='username']"),

@@ -1,3 +1,5 @@
+import time
+
 from selenium.common import TimeoutException
 from seleniumpagefactory import PageFactory
 from selenium.webdriver.support.ui import WebDriverWait as wait
@@ -25,4 +27,7 @@ class BasePage(PageFactory):
         except TimeoutException:
             return False
 
+    def pass_cloud_flare(self, url):
+        self.driver.execute_script(f"window.open('{url}', '_blank')")
+        time.sleep(15)
 

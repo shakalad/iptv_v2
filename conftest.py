@@ -20,6 +20,15 @@ def browser_driver():
         'download.directory_upgrade': True,
         'safebrowsing.enabled': True
     })
+    driver_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    driver_options.add_experimental_option("useAutomationExtension", False)
+    driver_options.add_argument("--disable-blink-features=AutomationControlled")
+    driver_options.add_argument("--disable-extensions")
+    driver_options.add_argument("--no-sandbox")
+    driver_options.add_argument("--disable-infobars")
+    driver_options.add_argument("--disable-dev-shm-usage")
+    driver_options.add_argument("--disable-browser-side-navigation")
+    driver_options.add_argument("--disable-gpu")
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=driver_options)
     # driver.maximize_window()
     yield driver
