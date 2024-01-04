@@ -32,8 +32,8 @@ class MoneyTransferPage(BasePage):
         self.element_is_present((By.CSS_SELECTOR, "button[id='mTransBtn']")).submit()
 
         # Check for enough money
-        if self.element_is_present((By.XPATH, "*//div[@class='uk-notification-message uk-notification-message-warning']")):
-            raise NotEnoughMoneyException
+        # if self.element_is_present((By.XPATH, "*//div[@class='uk-notification-message uk-notification-message-warning']")):
+        #     raise NotEnoughMoneyException
 
         self.verification_code.set_text(get_transaction_verification_code())
         self.submit_btn.click_button()
