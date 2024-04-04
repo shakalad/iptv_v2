@@ -16,3 +16,5 @@ class PlayListPage(BasePage):
 
     def download_playlist(self):
         self.playlist_download.click()
+        playlist_link: str = self.playlist_link.get_text()
+        self._json_handler.update_data("playlist_link", playlist_link)
