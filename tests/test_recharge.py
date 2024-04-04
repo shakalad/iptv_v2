@@ -1,5 +1,6 @@
 import time
 
+from handlers.user_handler import User
 from pages.vipdrive_pages.login_page import LoginPage
 from pages.vipdrive_pages.money_transfer_page import MoneyTransferPage
 from pages.vipdrive_pages.overview_page import OverviewPage
@@ -36,6 +37,14 @@ def test_recharge(browser_driver):
     tariff_page = TariffPage(browser_driver)
     tariff_page.activate_tariff()
 
+    # Logout from admin
+    money_transfer_page.logout()
 
+    # Login as user
+    user_credentials = User(email=email, password="904070")
+    login_page = LoginPage(browser_driver)
+    login_page.login_as_user(user_credentials)
 
-
+    # Activate tariff
+    tariff_page = TariffPage(browser_driver)
+    tariff_page.activate_tariff()

@@ -8,7 +8,7 @@ def get_ottplayer_registration_activation_link():
     SMTP_PORT = 993
 
     mail = imaplib.IMAP4_SSL(SMTP_SERVER, SMTP_PORT)
-    mail.login("ipservice2023@gmail.com", "duswmhrthxszwhcl")
+    mail.login("ipservice2024@gmail.com", "nkmkomzgauqmumfs")
     mail.select('inbox')
     _, msgnums = mail.search(None, '(FROM "support@ottplayer.tv")')
     activation_links = []

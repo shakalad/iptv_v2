@@ -24,13 +24,15 @@ class BotHandler:
 
     async def create_command(self, chat_id, email):
         await self.send_message(chat_id, "Starting new user registration")
-        self.__json_handler.update_data('email', "ipservice2023+" + email + "@gmail.com")
+        self.__json_handler.update_data('email', "ipservice2024+" + email + "@gmail.com")
         try:
             self.__pytest_handler.create_user()
         except NotEnoughMoneyException:
             await self.send_message(chat_id=chat_id, text=f'{str(NotEnoughMoneyException)}')
             return
         new_email = self.__json_handler.read_file()['email']
+        playlist_link = self.__json_handler.read_file()['playlist_link']
+        await self.send_message(chat_id=chat_id, text=f'Users playlist link: {playlist_link}')
         await self.send_message(chat_id=chat_id, text=f'{new_email} was successfully created')
 
     async def recharge_command(self, chat_id, email, amount="1"):
