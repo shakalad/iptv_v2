@@ -1,5 +1,6 @@
 import time
 
+from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 from email_module.ottplayer_verification_module import get_ottplayer_registration_activation_link
@@ -11,10 +12,10 @@ class SignUpPage(BasePage):
         super().__init__(driver)
         self.driver = driver
         self.url = "https://ottplayer.tv/account/registration"
-        self.pass_cloud_flare(self.url)
+        self.bypass_cloud_flare(url=self.url)
 
     locators = {
-        'username': ('CSS', "input[name='username']"),
+        'username': ('XPATH', "*//input[@name='username']"),
         'email': ('CSS', "input[name='email']"),
         'password': ('CSS', "input[name='password']"),
         're_password': ('CSS', "input[name='repassword']"),
@@ -33,3 +34,8 @@ class SignUpPage(BasePage):
         # activation
         time.sleep(10)
         self.open(get_ottplayer_registration_activation_link())
+
+    def fill_test_data(self, username: str, email: str, password: str) -> None:
+        self.username.set_text(username)
+        self.email.set_text(email)
+        self.password.set_text(password)

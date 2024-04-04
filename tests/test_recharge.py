@@ -28,6 +28,16 @@ def test_recharge(browser_driver):
     overview_page.check_balance()
 
     # Logout from admin
+    login_page.logout()
+
+    # Login as user
+    login_page.login_as_user(email)
+
+    # Activate tariff
+    tariff_page = TariffPage(browser_driver)
+    tariff_page.activate_tariff()
+
+    # Logout from admin
     money_transfer_page.logout()
 
     # Login as user
